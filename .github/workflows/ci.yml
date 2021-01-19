@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configura o Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Instala as dependências
+        run: |
+          nvm install 14.15.4
+          nvm use 14.15.4
+          pip install --upgrade pip
+          pip install lektor
+          npm install -g grunt
+          npm install
+          npm run build
+      - name: Build
+        run: lektor build
