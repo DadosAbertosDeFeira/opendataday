@@ -1,8 +1,6 @@
-{% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
-{% block body %}
+{% extends "layout.html" %} {% block title %}{{ this.title }}{% endblock %} {% block body %}
 <header class="banner">
-  <a href="#what">
+    <a href="#what">
     {% set banner_heading_1_words = this.banner_heading_1.split(' ') %}
     {% set banner_heading_2_words = this.banner_heading_2.split(' ') %}
     {% set banner_content_1_words = this.banner_content_1.split(' ') %}
@@ -16,232 +14,284 @@
 </header>
 {% include 'includes/nav.html' %}
 <section id="what">
-  <div>
-    <div class="about">
-      <header>
-        <h2>{{ this.intro_heading }}</h2>
-        {{ this.intro_body }}
-        {% if this.intro_body_2 and (this.intro_button is not defined) %}
-        {{ this.intro_body_2 }}
-        {% endif %}
-      </header>
-      {% if this.intro_button %}
-      <a>{{ this.intro_button }}</a>
-      {% endif %}
+    <div>
+        <div class="about">
+            <header>
+                <h2>{{ this.intro_heading }}</h2>
+                {{ this.intro_body }} {% if this.intro_body_2 and (this.intro_button is not defined) %} {{ this.intro_body_2 }} {% endif %}
+            </header>
+            {% if this.intro_button %}
+            <a>{{ this.intro_button }}</a> {% endif %}
+        </div>
+        <div class="this-year">
+            <header>
+                <h2>Open Data<br /> Day {{ this.next_date.strftime('%Y') }}</h2>
+                {{ this.year_intro }}
+            </header>
+            <ul>
+                <li>
+                    <svg><use xlink:href="#icon-equality" /></svg> {{ this.year_label_1 }}
+                </li>
+                <li>
+                    <svg><use xlink:href="#icon-environment" /></svg> {{ this.year_label_2 }}
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="this-year">
-      <header>
-        <h2>Open Data<br /> Day {{ this.next_date.strftime('%Y') }}</h2>
-        {{ this.year_intro }}
-      </header>
-      <ul>
-        <li>
-          <svg><use xlink:href="#icon-equality" /></svg>
-          {{ this.year_label_1 }}
-        </li>
-        <li>
-          <svg><use xlink:href="#icon-environment" /></svg>
-          {{ this.year_label_2 }}
-        </li>
-      </ul>
-    </div>
-  </div>
 </section>
 
 <section id="map">
-  <div id="map-container" style="height: inherit">
-  </div>
-
-  <section class="modal--show" id="modal-example" tabindex="-1"
-  role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-    <div class="modal-inner">
-      <div class="map">
-        <!-- detail map here -->
-      </div>
-      <div class="modal-content">
-        <div class="description">
-          <h3>Saint Catharines</h3>
-          <p>
-            On March 5th come to Cowork Niagara to help create a map or other technological design to help to explain...
-          </p>
-          <ol>
-            <li>
-              Where citizens can give food
-            </li>
-            <li>
-              Where citizens can find food
-            </li>
-          </ol>
-          <p>
-            You do not need any special skills to attend this event. We welcome all! Please feel free to join us.
-          </p>
-          <p>
-            If possible, please bring a laptop and remember your power cord!
-            Project work from the day will be developed on GitHub. You do not need to have any prior knowledge of GitHub to participate.
-          </p>
-          <p>
-            Food and beverages (with healthy, vegan and gluten-free options available) will be served throughout the day thank you to generous event sponsors.
-          </p>
-          <p>
-            Thank you to the Niagara Region, Software Niagara, Niagara Connects and Cowork Niagara for making this event possible.
-          </p>
-        </div>
-        <div class="meta">
-          <h5>Date &amp; Time</h5>
-          <p>
-            Sat, 4 March 2018<br />
-            9:00 AM – 5:00 PM EST
-          </p>
-
-          <h5>Location</h5>
-          <p>
-            Cowork Niagara<br />
-            108 Saint Paul Street<br />
-            Saint Catharines, ON L2R<br />
-            Canada
-          </p>
-        </div>
-      </div>
+    <div id="map-container" style="height: inherit">
     </div>
-    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-    data-dismiss="modal">?</a>
-  </section>
-  <header>
-    <div>
-      <div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBBp5CZXe2M8wXulTNgRTZWo1PD2raB6IEEha9FJaq6hVSfQ/viewform" rel="external">{{ this.register_text }}</a>
-        <span class="count"><span id="event-number">0</span> {{ this.events_registered }}</span>
-      </div>
-    </div>
-  </header>
+
+    <section class="modal--show" id="modal-example" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+        <div class="modal-inner">
+            <div class="map">
+                <!-- detail map here -->
+            </div>
+            <div class="modal-content">
+                <div class="description">
+                    <h3>Saint Catharines</h3>
+                    <p>
+                        On March 5th come to Cowork Niagara to help create a map or other technological design to help to explain...
+                    </p>
+                    <ol>
+                        <li>
+                            Where citizens can give food
+                        </li>
+                        <li>
+                            Where citizens can find food
+                        </li>
+                    </ol>
+                    <p>
+                        You do not need any special skills to attend this event. We welcome all! Please feel free to join us.
+                    </p>
+                    <p>
+                        If possible, please bring a laptop and remember your power cord! Project work from the day will be developed on GitHub. You do not need to have any prior knowledge of GitHub to participate.
+                    </p>
+                    <p>
+                        Food and beverages (with healthy, vegan and gluten-free options available) will be served throughout the day thank you to generous event sponsors.
+                    </p>
+                    <p>
+                        Thank you to the Niagara Region, Software Niagara, Niagara Connects and Cowork Niagara for making this event possible.
+                    </p>
+                </div>
+                <div class="meta">
+                    <h5>Date &amp; Time</h5>
+                    <p>
+                        Sat, 4 March 2018<br /> 9:00 AM – 5:00 PM EST
+                    </p>
+
+                    <h5>Location</h5>
+                    <p>
+                        Cowork Niagara<br /> 108 Saint Paul Street<br /> Saint Catharines, ON L2R<br /> Canada
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
+    </section>
+    <header>
+        <div>
+            <div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBBp5CZXe2M8wXulTNgRTZWo1PD2raB6IEEha9FJaq6hVSfQ/viewform" rel="external">{{ this.register_text }}</a>
+                <span class="count"><span id="event-number">0</span> {{ this.events_registered }}</span>
+            </div>
+        </div>
+    </header>
 </section>
 
 <section id="who">
-  <div>
-    <header>
-      <h2>{{ this.who_heading }}</h2>
-      {{ this.who_body }}
-    </header>
-    <ul>
-      <li>
-        <span>
+    <div>
+        <header>
+            <h2>{{ this.who_heading }}</h2>
+            {{ this.who_body }}
+        </header>
+        <ul>
+            <li>
+                <span>
           <svg><use xlink:href="#icon-user-outline" /></svg>
         </span>
-        <h3>{{ this.who_title_1 }}</h3>
-        {{ this.who_description_1 }}
-      </li>
-      <li>
-        <span>
+                <h3>{{ this.who_title_1 }}</h3>
+                {{ this.who_description_1 }}
+            </li>
+            <li>
+                <span>
           <svg><use xlink:href="#icon-card" /></svg>
         </span>
-        <h3>{{ this.who_title_2 }}</h3>
-        {{ this.who_description_2 }}
-      </li>
-      <li>
-        <span>
+                <h3>{{ this.who_title_2 }}</h3>
+                {{ this.who_description_2 }}
+            </li>
+            <li>
+                <span>
           <svg><use xlink:href="#icon-brush" /></svg>
         </span>
-        <h3>{{ this.who_title_3 }}</h3>
-        {{ this.who_description_3 }}
-      </li>
-      <li>
-        <span>
+                <h3>{{ this.who_title_3 }}</h3>
+                {{ this.who_description_3 }}
+            </li>
+            <li>
+                <span>
           <svg><use xlink:href="#icon-code-outline" /></svg>
         </span>
-        <h3>{{ this.who_title_4 }}</h3>
-        {{ this.who_description_4 }}
-      </li>
-      <li>
-        <span>
+                <h3>{{ this.who_title_4 }}</h3>
+                {{ this.who_description_4 }}
+            </li>
+            <li>
+                <span>
           <svg><use xlink:href="#icon-chart-bar" /></svg>
         </span>
-        <h3>{{ this.who_title_5 }}</h3>
-        {{ this.who_description_5 }}
-      </li>
-    </ul>
-  </div>
+                <h3>{{ this.who_title_5 }}</h3>
+                {{ this.who_description_5 }}
+            </li>
+        </ul>
+    </div>
 </section>
 
 <section id="resources">
-  <div>
-    <header>
-      <h2>{{ this.resources_heading }}</h2>
-      <svg class="research"><use xlink:href="#icon-research" /></svg>
-      <svg class="money"><use xlink:href="#icon-money" /></svg>
-      <svg class="mapping"><use xlink:href="#icon-mapping" /></svg>
-      <svg class="equality"><use xlink:href="#icon-equality" /></svg>
-      {{ this.resources_intro }}
-    </header>
-    <a href="#resources">{{ this.resources_button }}</a>
-    <article>
-      <h3>{{ this.resources_materials_heading }}</h3>
-      {{ this.resources_materials_text }}
-      <h3>{{ this.resources_ideas_heading }}</h3>
-      <div>
-        {{ this.resources_ideas_intro }}
-        <span class="theme">
+    <div>
+        <header>
+            <h2>{{ this.resources_heading }}</h2>
+            <svg class="research"><use xlink:href="#icon-research" /></svg>
+            <svg class="money"><use xlink:href="#icon-money" /></svg>
+            <svg class="mapping"><use xlink:href="#icon-mapping" /></svg>
+            <svg class="equality"><use xlink:href="#icon-equality" /></svg> {{ this.resources_intro }}
+        </header>
+        <a href="#resources">{{ this.resources_button }}</a>
+        <article>
+            <h3>{{ this.resources_materials_heading }}</h3>
+            {{ this.resources_materials_text }}
+            <h3>{{ this.resources_ideas_heading }}</h3>
+            <div>
+                {{ this.resources_ideas_intro }}
+                <span class="theme">
           <h4>{{ this.resources_ideas_theme_1 }}</h4>
           {{ this.resources_ideas_theme_1_text }}
         </span>
-        <span class="theme">
+                <span class="theme">
           <h4>{{ this.resources_ideas_theme_2 }}</h4>
           {{ this.resources_ideas_theme_2_text }}
         </span>
-        <span class="theme">
+                <span class="theme">
           <h4>{{ this.resources_ideas_theme_3 }}</h4>
           {{ this.resources_ideas_theme_3_text }}
         </span>
-        <span class="theme">
+                <span class="theme">
           <h4>{{ this.resources_ideas_theme_4 }}</h4>
           {{ this.resources_ideas_theme_4_text }}
         </span>
-        <span class="theme">
+                <span class="theme">
           <h4>{{ this.resources_ideas_theme_5 }}</h4>
           {{ this.resources_ideas_theme_5_text }}
         </span>
-      </div>
-    </article>
-  </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section id="guests">
+    <div>
+        <header>
+            <h2 class="title is-2">Conheça os nossos convidados</h2>
+            {{ this.guests_intro }}
+        </header>
+
+        <article>
+        </article>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-96x96">
+                            <img src="../images/guests/abertura-evandro-nascimento.png" alt="Foto do Evandro Nascimento">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">Evandro do Nascimento</p>
+                        <p class="subtitle is-6">Reitor da <a href="https://www.uefs.br/">Universidade Estadual de Feira de Santana - UEFS</a></p>
+                        <p class="subtitle is-6">Abertura</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    Evandro do Nascimento Silva possui graduação em Ciências Biológicas e também o mestrado em Ciências Biológicas, pela Universidade Federal da Paraíba, e doutorado pela Universidade de Michigan, EUA. Atualmente é Professor Titular do Departamento de Ciências
+                    Biológicas da Uefs e foi reeleito para o cargo de reitor.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-96x96">
+                            <img src="../images/guests/abertura-fernanda-campagnucci.jpg" alt="Foto da Fernanda Campagnucci">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">Fernanda Campagnucci</p>
+                        <p class="subtitle is-6">Diretora da <a href="http://br.okfn.org/">Open Knowledge Brasil</a></p>
+                        <p>Abertura: "Dados abertos para uma cidade democrática e inteligente"</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    Diretora-executiva da Open Knowledge Brasil, organização da sociedade civil que atua para democratizar o acesso a dados e ampliar a transparência e a participação política com o uso de tecnologias cívicas. Integrou a carreira de gestão pública na Prefeitura
+                    de São Paulo, onde foi responsável pela política de transparência e integridade, além de ter coordenado projetos de inovação e governo aberto como o Pátio Digital. Graduada em Jornalismo e mestre em Educação, é doutoranda em Administração
+                    Pública pela FGV-SP.
+                    <a href="https://twitter.com/fecampa">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <!-- <a>
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                    <a href="http://br.okfn.org/">
+                        <ion-icon name="globe-outline"></ion-icon>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="support">
-  <div>
-    <header>
-      <h2>{{ this.support_scheme_heading }}</h2>
-      {{ this.support_scheme_body }}
-      
-      <p>{{ this.support_scheme_body_2 }}</p>
-      <p>{{ this.support_scheme_body_4 }}</p>
-      <p>{{ this.support_scheme_body_5 }}</p>
-    </header>
+    <div>
+        <header>
+            <h2 class="title is-2">{{ this.support_scheme_heading }}</h2>
+            {{ this.support_scheme_body }}
 
-    <a href="https://forms.gle/BLC1zhKDbH3NGBnp9" rel="external">{{ this.support_scheme_button }}</a>
-  </div>
+            <p>{{ this.support_scheme_body_2 }}</p>
+            <p>{{ this.support_scheme_body_4 }}</p>
+            <p>{{ this.support_scheme_body_5 }}</p>
+        </header>
+
+        <a href="https://forms.gle/BLC1zhKDbH3NGBnp9" rel="external">{{ this.support_scheme_button }}</a>
+    </div>
 </section>
 
 <section id="logos">
-  <div>
-    <header>
-      {{ this.support_scheme_logos }}
-    </header>
-    <ul>
-      <li>
-      <span>
+    <div>
+        <header>
+            {{ this.support_scheme_logos }}
+        </header>
+        <ul>
+            <li>
+                <span>
         <a href="https://www.dadosabertosdefeira.com.br">
         <img src="https://github.com/DadosAbertosDeFeira/opendataday/raw/main/assets/images/dados-abertos-de-feira-branco.png">
         </a>
       </span>
-      </li>
-      <li>
-      <span>
+            </li>
+            <li>
+                <span>
         <a href="https://pgcc.uefs.br/">
         <img src="https://github.com/DadosAbertosDeFeira/opendataday/raw/main/assets/images/pgcc-perfilbranco.png">
         </a>
       </span>
-      </li>
-   </li>
-    </ul>
-  </div>
+            </li>
+            </li>
+        </ul>
+    </div>
 </section>
 
 {% endblock %}
